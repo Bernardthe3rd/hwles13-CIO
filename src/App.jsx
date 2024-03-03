@@ -12,7 +12,9 @@ function App() {
         try {
             const response = await axios.get('https://restcountries.com/v3.1/all')
             console.log(response.data[4])
-            getCountries(response.data)
+            getCountries(response.data.sort((a,b) => {
+                return a.population - b.population
+            })) //data hier sorteren
         } catch(e) {
             console.log(e)
         }
@@ -26,8 +28,10 @@ function App() {
             </button>
             <ul>
                 {countries.map((country) => {
-                   return <li key={country.name.common}>
-                       <img src={country.flags.png} alt={country.flags.alt}/>
+                   return <li key={country.name.common} className={"container"}>
+                       <span className={"wrapper-img"}>
+                            <img src={country.flags.png} alt={country.flags.alt}/>
+                       </span>
                        <h4>{country.name.common}</h4>
                        <p>Has a population of {country.population} people</p>
                    </li>

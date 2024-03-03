@@ -21,3 +21,36 @@
 .anywhere {
     color: darkorange;
 }
+
+ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px dotted green;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+img {
+    max-width: 100%;
+}
+
+.wrapper-img {
+    max-width: 50px;
+    max-height: 50px;
+    border: 2px dashed red;
+}
