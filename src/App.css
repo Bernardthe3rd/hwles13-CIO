@@ -1,9 +1,9 @@
 .africa {
-    color: lightblue;
+    color: darkblue;
 }
 
 .americas {
-    color: lightgreen;
+    color: darkgreen;
 }
 
 .asia {
@@ -22,11 +22,20 @@
     color: darkorange;
 }
 
+.wrapper-img-header > img {
+    max-width: 100%;
+}
+
+.wrapper-img-header {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 ul {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    border: 1px dotted green;
+    background-color: lightgrey;
 
     display: flex;
     flex-direction: row;
@@ -34,10 +43,9 @@ ul {
 }
 
 .container {
-    max-width: 250px;
+    max-width: 275px;
     margin: 0 auto;
     padding: 0 20px;
-    border: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -45,7 +53,7 @@ ul {
     flex-wrap: wrap;
 }
 
-img {
+.wrapper-img > img {
     max-width: 100%;
 }
 
@@ -53,4 +61,5 @@ img {
     max-width: 50px;
     max-height: 50px;
     border: 2px dashed red;
+    margin-right: 10px;
 }
