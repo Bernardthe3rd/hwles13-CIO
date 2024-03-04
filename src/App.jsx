@@ -13,7 +13,6 @@ function App() {
     async function fetchData () {
         try {
             const response = await axios.get(`https://restcountries.com/v3.1/name/${value}`)
-            console.log(response.data[0].name.common + response.data[0].capital[0]);
             console.log(response.data[0])
             setCountry(response.data);
         } catch(e) {
@@ -23,14 +22,19 @@ function App() {
         }
     }
 
+//vraag 1 voor feedbackgever: hoe gaat de input value weer leeg na het klikken op de knop?
+
+//vraag 2: is dan ook direct mijn error melding opgelost en verdwijnt hij weer na een juiste invoer?
+
+
     return (
         <>
             <h1>Search country information</h1>
-            <input type="text" onChange={(e) => {setValue(e.target.value)}}></input>
+            <input type="text" onChange={(e) => {setValue(e.target.value)}} placeholder={"Bijvoorbeeld: Nederland of IJsland"}></input>
             <button type={"submit"} onClick={fetchData}>zoeken</button>
             {error && <p className={"error"}>{error}</p>}
             {country.map((nation) => {
-                return <article key={nation.name}>
+                return <article key={nation.name} className={"outer-container"}>
                     <div className={"container"}>
                         <span className={"wrapper-flag"}>
                             <img src={nation.flags.svg} alt={nation.flags.alt}/>
