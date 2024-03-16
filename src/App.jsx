@@ -8,32 +8,36 @@ function App() {
     const [country, setCountry] = useState([])
     const [value, setValue] = useState("")
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
 
     async function fetchData () {
         try {
+            setLoading(true)
             const response = await axios.get(`https://restcountries.com/v3.1/name/${value}`)
             console.log(response.data[0])
             setCountry(response.data);
+            setValue("")
+            setError("")
         } catch(e) {
-            console.log(e);
+            console.error(e);
+            console.log(e.response.status)
             setError(`${value} bestaat niet. Probeer het opnieuw`)
             setValue("")
+        } finally {
+            setLoading(false)
         }
     }
-
-//vraag 1 voor feedbackgever: hoe gaat de input value weer leeg na het klikken op de knop?
-
-//vraag 2: is dan ook direct mijn error melding opgelost en verdwijnt hij weer na een juiste invoer?
 
 
     return (
         <>
             <h1>Search country information</h1>
-            <input type="text" onChange={(e) => {setValue(e.target.value)}} placeholder={"Bijvoorbeeld: Nederland of IJsland"}></input>
+            {loading && <p>Loading...</p>}
+            <input type="text" value={value} onChange={(e) => {setValue(e.target.value)}} placeholder={"Bijvoorbeeld: Nederland of IJsland"}></input>
             <button type={"submit"} onClick={fetchData}>zoeken</button>
             {error && <p className={"error"}>{error}</p>}
-            {country.map((nation) => {
+            { !error && country.map((nation) => {
                 return <article key={nation.name} className={"outer-container"}>
                     <div className={"container"}>
                         <span className={"wrapper-flag"}>
